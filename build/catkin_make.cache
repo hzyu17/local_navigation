@@ -1,0 +1,2 @@
+uavInfo
+-DCATKIN_DEVEL_PREFIX=/home/lucasyu/ros_test_ws/devel -DCMAKE_INSTALL_PREFIX=/home/lucasyu/ros_test_ws/install -G Unix Makefiles
