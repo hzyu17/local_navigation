@@ -2,7 +2,7 @@
 
 Code in call for different needs in the local planning project.
 Functions realized: 
-- Formaat transformation (cloud to pcl data format, then to csv files; rgb depth image write to csv dat and reading)
+- Format transformation (cloud to pcl data format, then to csv files; rgb depth image write to csv dat and reading)
 - Randomly generalized starting positions and global targets in a map in the simulation environment
 - Adding rotations of the map in the data using odom data information
 - Multi-processing data 
