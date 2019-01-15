@@ -1,3 +1,5 @@
+'''automaticly play bags and save data as csv files at the same time..'''
+
 import os
 import time
 import multiprocessing.pool as Pool
