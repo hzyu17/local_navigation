@@ -10,6 +10,12 @@
 #include <nav_msgs/Odometry.h>
 #include <geometry_msgs/PointStamped.h>
 #include <std_msgs/Float64.h>
+#include <opencv2/opencv.hpp> 
+#include <opencv2/imgproc/imgproc.hpp>
+#include <cv_bridge/cv_bridge.h>
+#include <image_transport/image_transport.h>
+#include <sensor_msgs/image_encodings.h>
+
 
 #include <iostream>
 #include <string>
@@ -17,6 +23,7 @@
 #include <array>
 #include <time.h>
 #include <numeric>
+
 
 using namespace std;
 std::vector< std::vector<float> > data_pcl;
@@ -46,7 +53,7 @@ float yaw_forward = 0.0f;
 float yaw_backward = 0.0f;
 float yaw_leftward = 0.0f;
 float yaw_rightward = 0.0f;
-
+std::vector<int> v_rgb_one_line;
 
 const int num_uavdata = 17;
 const int num_label = 4;
@@ -55,8 +62,10 @@ const int img_width = 64;
 const int img_height_uplimit = 20;
 const int img_height_downlimit = 4;
 const int info_dim = 1;
+const int resize_rgb_width = 256;
+const int resize_rgb_height = 192;
 
-
+ofstream outFile_rgbdata;
 ofstream outFile_uavdata;
 ofstream outFile_labels;
 ofstream outFile_pcd;
@@ -182,32 +191,6 @@ void CallbackPointCloud(const sensor_msgs::PointCloud2ConstPtr& cloud)
             indensity_index = int(point.data_c[0] + 0.49f);
             intensity_count[indensity_index] += 1;
         }
-
-//         auto point = cloud_in->points[i_pt];
-        
-//         float intensity;
-//         intensity = point.data_c[0]/7.f;
-
-//         int x_tmp;
-//         x_tmp = int((point.data[0] - position_odom_x) * 5 + 0.5f);
-//         int y_tmp;
-//         y_tmp = int((point.data[1] - position_odom_y) * 5 + 0.5f);
-//         int z_tmp;
-//         z_tmp = int((point.data[2] - position_odom_z) * 5 + 0.5f);
-
-//         if (abs(x_tmp) < img_width/2 && abs(y_tmp) < img_width/2 && z_tmp > -img_height_downlimit && z_tmp < img_height_uplimit)
-//         {
-//             int x_index = x_tmp + img_width / 2;
-//             int y_index = y_tmp + img_width / 2;
-//             int z_index = z_tmp + img_height_downlimit;
-// //            cout<<"indx and info: "<<x_index<<' '<<y_index<<' '<<z_index<<' '<< intensity << endl;
-//             cloud_modified[x_index][y_index][z_index][0] = intensity;
-
-//             // To count persentage of each semantic label
-//             int indensity_index;
-//             indensity_index = int(point.data_c[0] + 0.49f);
-//             intensity_count[indensity_index] += 1;
-//         }
     }
 
     // To count persentage of each semantic label
@@ -242,9 +225,58 @@ void CallbackPointCloud(const sensor_msgs::PointCloud2ConstPtr& cloud)
 
     outFile_pcd << endl;
 
+    char c_bgr[20];
+    for (auto & item_rgb : v_rgb_one_line)
+    {
+    	sprintf(c_bgr, "%d", item_rgb);
+    	outFile_rgbdata << c_bgr << ",";
+    }
+    outFile_rgbdata << endl;
+
     return;
 }
 
+
+
+void callbackRGB(const sensor_msgs::ImageConstPtr& msg)
+{
+    cv_bridge::CvImagePtr cv_ptr;
+    v_rgb_one_line.clear();
+    try 
+    {
+        cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
+        cv::Mat dst;
+        cv::resize(cv_ptr->image, dst, cv::Size(resize_rgb_width, resize_rgb_height));
+        // cout<< dst.at<float>(0,0)<<endl;
+        int img_h = dst.rows;
+        int img_w = dst.cols; // total number of elements per line
+        // cout << "nr: "<< nr<< endl <<"nc: "<<nc << endl;
+        for (int i=0; i<img_h; i++) {
+        	for (int j=0; j<img_w; j++) {
+                int color_b = dst.at<cv::Vec3b>(i, j)[0]; 
+                int color_g = dst.at<cv::Vec3b>(i, j)[1]; 
+                int color_r = dst.at<cv::Vec3b>(i, j)[2]; 
+                v_rgb_one_line.push_back(color_b);
+                v_rgb_one_line.push_back(color_g);
+                v_rgb_one_line.push_back(color_r);
+                // sprintf(c_b, "%d", color_b);
+                // sprintf(c_g, "%d", color_g);
+                // sprintf(c_r, "%d", color_r);
+
+                // outFile_rgbdata << c_b << "," << c_g << "," << c_r << ",";
+            }
+        }
+
+        // outFile_rgbdata << endl;
+        return;
+    }
+    catch (cv_bridge::Exception& e)
+    {   
+         ROS_ERROR("cv_bridge exception: %s", e.what());
+         return;
+    }
+
+}
 
 void callBackOdom(const nav_msgs::OdometryConstPtr& odom)
 {
@@ -331,6 +363,10 @@ int main(int argc, char** argv)
     time_t t = time(0);
     char tmp[64];
     strftime( tmp, sizeof(tmp), "%Y_%m_%d_%X",localtime(&t) );
+    
+    char c_rgb_data[100];
+    sprintf(c_rgb_data,"rgb_data_%s.csv",tmp);
+    cout<<"----- file rgb data: "<< c_rgb_data<<endl;
     char c_uav_data[100];
     sprintf(c_uav_data,"uav_data_%s.csv",tmp);
     cout<<"----- file uav data: "<< c_uav_data<<endl;
@@ -343,14 +379,9 @@ int main(int argc, char** argv)
     char c_intensity_proportion[100];
     sprintf(c_intensity_proportion,"intensity_proportion_%s.csv",tmp);
 
+    outFile_rgbdata.open(c_rgb_data, ios::out);
     outFile_uavdata.open(c_uav_data, ios::out);
-//    outFile_uavdata<<"position_odom_x"<<","<<"position_odom_y"<<","<<"vel_odom"<<","<<"angular_odom"
-//           <<","<<"position_radar_x"<<","<<"position_radar_y"<<","<<"pos_target_x"
-//           <<","<<"pos_target_y"<<","<<"yaw_target" <<","<<"yaw_current"<<","<<yaw_current_x<<","<<yaw_current_y<<","<<"yaw_delt"<<endl;
-
     outFile_labels.open(c_label_data, ios::out);
-//    outFile_labels<<"vel_smoother"<<","<<"angular_smoother"<<","<<"vel_teleop"<<","<<"angular_teleop"<<endl;
-
     outFile_pcd.open(c_pcl_data, ios::out);
     outFile_intensity_proportion.open(c_intensity_proportion, ios::out);
 
@@ -365,8 +396,10 @@ int main(int argc, char** argv)
     ros::Subscriber TargetYaw_sub = nh.subscribe("/radar/target_yaw", 2, callBackTargetYaw);
     ros::Subscriber CurrentYaw_sub = nh.subscribe("/radar/current_yaw", 2, callBackCurrentYaw);
     ros::Subscriber DeltYaw_sub = nh.subscribe("/radar/delt_yaw", 2, callBackDeltYaw);
+    ros::Subscriber rgbImage_sub = nh.subscribe("/camera/rgb/image_raw", 2, callbackRGB);
     ros::spin();
     outFile_uavdata.close();
     outFile_labels.close();
+    outFile_rgbdata.close();
     return 0;
 }
