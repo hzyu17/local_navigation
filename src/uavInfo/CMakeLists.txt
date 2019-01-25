@@ -170,6 +170,9 @@ target_link_libraries(processData ${PCL_LIBRARIES} ${catkin_LIBRARIES})
 add_executable(processDataOrigin src/processData_origin.cpp)
 target_link_libraries(processDataOrigin ${PCL_LIBRARIES} ${catkin_LIBRARIES})
 
+add_executable(processDataDepthRgb src/save_depth_img.cpp)
+target_link_libraries(processDataDepthRgb ${PCL_LIBRARIES} ${catkin_LIBRARIES})
+
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
 # install(PROGRAMS
