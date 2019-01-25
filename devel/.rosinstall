@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/lucasyu/ros_test_ws/devel/setup.sh
+    local-name: /home/ubuntu/local_navigation/devel/setup.sh

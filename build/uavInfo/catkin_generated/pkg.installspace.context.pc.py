@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "uavInfo"
-PROJECT_SPACE_DIR = "/home/lucasyu/ros_test_ws/install"
+PROJECT_SPACE_DIR = "/home/ubuntu/local_navigation/install"
 PROJECT_VERSION = "0.0.0"

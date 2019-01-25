@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lucasyu/ros_test_ws/src
+CMAKE_SOURCE_DIR = /home/ubuntu/local_navigation/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lucasyu/ros_test_ws/build
+CMAKE_BINARY_DIR = /home/ubuntu/local_navigation/build
 
 # Utility rule file for geometry_msgs_generate_messages_nodejs.
 
@@ -63,10 +63,10 @@ uavInfo/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build: geometry_ms
 .PHONY : uavInfo/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
 
 uavInfo/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean:
-	cd /home/lucasyu/ros_test_ws/build/uavInfo && $(CMAKE_COMMAND) -P CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/cmake_clean.cmake
+	cd /home/ubuntu/local_navigation/build/uavInfo && $(CMAKE_COMMAND) -P CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/cmake_clean.cmake
 .PHONY : uavInfo/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
 
 uavInfo/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/depend:
-	cd /home/lucasyu/ros_test_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lucasyu/ros_test_ws/src /home/lucasyu/ros_test_ws/src/uavInfo /home/lucasyu/ros_test_ws/build /home/lucasyu/ros_test_ws/build/uavInfo /home/lucasyu/ros_test_ws/build/uavInfo/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/local_navigation/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/local_navigation/src /home/ubuntu/local_navigation/src/uavInfo /home/ubuntu/local_navigation/build /home/ubuntu/local_navigation/build/uavInfo /home/ubuntu/local_navigation/build/uavInfo/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : uavInfo/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/depend
 

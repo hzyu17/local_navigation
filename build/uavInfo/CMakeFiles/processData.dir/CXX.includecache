@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/lucasyu/ros_test_ws/src/uavInfo/src/processData.cpp
+/home/ubuntu/local_navigation/src/uavInfo/src/processData.cpp
 ros/ros.h
 -
 tf/transform_datatypes.h

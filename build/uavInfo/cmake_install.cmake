@@ -1,8 +1,8 @@
-# Install script for directory: /home/lucasyu/ros_test_ws/src/uavInfo
+# Install script for directory: /home/ubuntu/local_navigation/src/uavInfo
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/lucasyu/ros_test_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/ubuntu/local_navigation/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,17 +33,17 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/lucasyu/ros_test_ws/build/uavInfo/catkin_generated/installspace/uavInfo.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ubuntu/local_navigation/build/uavInfo/catkin_generated/installspace/uavInfo.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/uavInfo/cmake" TYPE FILE FILES
-    "/home/lucasyu/ros_test_ws/build/uavInfo/catkin_generated/installspace/uavInfoConfig.cmake"
-    "/home/lucasyu/ros_test_ws/build/uavInfo/catkin_generated/installspace/uavInfoConfig-version.cmake"
+    "/home/ubuntu/local_navigation/build/uavInfo/catkin_generated/installspace/uavInfoConfig.cmake"
+    "/home/ubuntu/local_navigation/build/uavInfo/catkin_generated/installspace/uavInfoConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/uavInfo" TYPE FILE FILES "/home/lucasyu/ros_test_ws/src/uavInfo/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/uavInfo" TYPE FILE FILES "/home/ubuntu/local_navigation/src/uavInfo/package.xml")
 endif()
 

@@ -1,8 +1,8 @@
-prefix=/home/lucasyu/ros_test_ws/install
+prefix=/home/ubuntu/local_navigation/install
 
 Name: uavInfo
 Description: Description of uavInfo
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/lucasyu/ros_test_ws/install/lib 
+Libs: -L/home/ubuntu/local_navigation/install/lib 
 Requires: 

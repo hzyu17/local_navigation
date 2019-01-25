@@ -4,13 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/lucasyu/ros_test_ws/src/uavInfo/src/processData_origin.cpp" "/home/lucasyu/ros_test_ws/build/uavInfo/CMakeFiles/processDataOrigin.dir/src/processData_origin.cpp.o"
+  "/home/ubuntu/local_navigation/src/uavInfo/src/processData_origin.cpp" "/home/ubuntu/local_navigation/build/uavInfo/CMakeFiles/processDataOrigin.dir/src/processData_origin.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
-  "DISABLE_OPENNI2"
   "DISABLE_PCAP"
   "DISABLE_PNG"
   "EIGEN_USE_NEW_STDVECTOR"
@@ -39,10 +38,10 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/vtk-6.2"
-  "/usr/include/python2.7"
+  "/usr/include/x86_64-linux-gnu"
   "/usr/include/freetype2"
   "/usr/include/x86_64-linux-gnu/freetype2"
-  "/usr/include/x86_64-linux-gnu"
+  "/usr/include/tcl"
   "/usr/include/jsoncpp"
   "/usr/lib/openmpi/include/openmpi/opal/mca/event/libevent2021/libevent"
   "/usr/lib/openmpi/include/openmpi/opal/mca/event/libevent2021/libevent/include"
@@ -50,12 +49,15 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/lib/openmpi/include/openmpi"
   "/usr/include/hdf5/openmpi"
   "/usr/include/libxml2"
-  "/usr/include/tcl"
+  "/usr/include/python2.7"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
+  "/opt/ros/kinetic/include/opencv-3.3.1-dev"
+  "/opt/ros/kinetic/include/opencv-3.3.1-dev/opencv"
   "/usr/include/pcl-1.7"
   "/usr/include/eigen3"
   "/usr/include/ni"
+  "/usr/include/openni2"
   "/usr/include/x86_64-linux-gnu/qt5"
   "/usr/include/x86_64-linux-gnu/qt5/QtWidgets"
   "/usr/include/x86_64-linux-gnu/qt5/QtGui"

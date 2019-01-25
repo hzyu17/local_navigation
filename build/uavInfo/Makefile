@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lucasyu/ros_test_ws/src
+CMAKE_SOURCE_DIR = /home/ubuntu/local_navigation/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lucasyu/ros_test_ws/build
+CMAKE_BINARY_DIR = /home/ubuntu/local_navigation/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -81,8 +81,8 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -135,14 +135,14 @@ list_install_components/fast: list_install_components
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/lucasyu/ros_test_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/lucasyu/ros_test_ws/build/CMakeFiles /home/lucasyu/ros_test_ws/build/uavInfo/CMakeFiles/progress.marks
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucasyu/ros_test_ws/build/CMakeFiles 0
+	cd /home/ubuntu/local_navigation/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/local_navigation/build/CMakeFiles /home/ubuntu/local_navigation/build/uavInfo/CMakeFiles/progress.marks
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/local_navigation/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/clean
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,22 +152,37 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/preinstall
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/preinstall
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/lucasyu/ros_test_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/ubuntu/local_navigation/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
+uavInfo/CMakeFiles/processDataDepthRgb.dir/rule:
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/processDataDepthRgb.dir/rule
+.PHONY : uavInfo/CMakeFiles/processDataDepthRgb.dir/rule
+
+# Convenience name for target.
+processDataDepthRgb: uavInfo/CMakeFiles/processDataDepthRgb.dir/rule
+
+.PHONY : processDataDepthRgb
+
+# fast build rule for target.
+processDataDepthRgb/fast:
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/processDataDepthRgb.dir/build.make uavInfo/CMakeFiles/processDataDepthRgb.dir/build
+.PHONY : processDataDepthRgb/fast
+
+# Convenience name for target.
 uavInfo/CMakeFiles/processDataOrigin.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/processDataOrigin.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/processDataOrigin.dir/rule
 .PHONY : uavInfo/CMakeFiles/processDataOrigin.dir/rule
 
 # Convenience name for target.
@@ -177,12 +192,12 @@ processDataOrigin: uavInfo/CMakeFiles/processDataOrigin.dir/rule
 
 # fast build rule for target.
 processDataOrigin/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/processDataOrigin.dir/build.make uavInfo/CMakeFiles/processDataOrigin.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/processDataOrigin.dir/build.make uavInfo/CMakeFiles/processDataOrigin.dir/build
 .PHONY : processDataOrigin/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
 .PHONY : uavInfo/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -192,12 +207,12 @@ geometry_msgs_generate_messages_py: uavInfo/CMakeFiles/geometry_msgs_generate_me
 
 # fast build rule for target.
 geometry_msgs_generate_messages_py/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make uavInfo/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make uavInfo/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
 .PHONY : uavInfo/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
@@ -207,12 +222,12 @@ geometry_msgs_generate_messages_nodejs: uavInfo/CMakeFiles/geometry_msgs_generat
 
 # fast build rule for target.
 geometry_msgs_generate_messages_nodejs/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make uavInfo/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make uavInfo/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
 .PHONY : geometry_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 .PHONY : uavInfo/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -222,12 +237,12 @@ std_msgs_generate_messages_py: uavInfo/CMakeFiles/std_msgs_generate_messages_py.
 
 # fast build rule for target.
 std_msgs_generate_messages_py/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/std_msgs_generate_messages_py.dir/build.make uavInfo/CMakeFiles/std_msgs_generate_messages_py.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/std_msgs_generate_messages_py.dir/build.make uavInfo/CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 .PHONY : uavInfo/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -237,12 +252,12 @@ sensor_msgs_generate_messages_py: uavInfo/CMakeFiles/sensor_msgs_generate_messag
 
 # fast build rule for target.
 sensor_msgs_generate_messages_py/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make uavInfo/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make uavInfo/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
 .PHONY : sensor_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/roscpp_generate_messages_py.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/roscpp_generate_messages_py.dir/rule
 .PHONY : uavInfo/CMakeFiles/roscpp_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -252,12 +267,12 @@ roscpp_generate_messages_py: uavInfo/CMakeFiles/roscpp_generate_messages_py.dir/
 
 # fast build rule for target.
 roscpp_generate_messages_py/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/roscpp_generate_messages_py.dir/build.make uavInfo/CMakeFiles/roscpp_generate_messages_py.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/roscpp_generate_messages_py.dir/build.make uavInfo/CMakeFiles/roscpp_generate_messages_py.dir/build
 .PHONY : roscpp_generate_messages_py/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
 .PHONY : uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
@@ -267,12 +282,12 @@ rosgraph_msgs_generate_messages_eus: uavInfo/CMakeFiles/rosgraph_msgs_generate_m
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_eus/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
 .PHONY : rosgraph_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/processData.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/processData.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/processData.dir/rule
 .PHONY : uavInfo/CMakeFiles/processData.dir/rule
 
 # Convenience name for target.
@@ -282,12 +297,12 @@ processData: uavInfo/CMakeFiles/processData.dir/rule
 
 # fast build rule for target.
 processData/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/processData.dir/build.make uavInfo/CMakeFiles/processData.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/processData.dir/build.make uavInfo/CMakeFiles/processData.dir/build
 .PHONY : processData/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 .PHONY : uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
@@ -297,12 +312,12 @@ rosgraph_msgs_generate_messages_nodejs: uavInfo/CMakeFiles/rosgraph_msgs_generat
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_nodejs/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
 .PHONY : rosgraph_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
 .PHONY : uavInfo/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
@@ -312,12 +327,12 @@ geometry_msgs_generate_messages_eus: uavInfo/CMakeFiles/geometry_msgs_generate_m
 
 # fast build rule for target.
 geometry_msgs_generate_messages_eus/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make uavInfo/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make uavInfo/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
 .PHONY : geometry_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 .PHONY : uavInfo/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -327,12 +342,12 @@ roscpp_generate_messages_cpp: uavInfo/CMakeFiles/roscpp_generate_messages_cpp.di
 
 # fast build rule for target.
 roscpp_generate_messages_cpp/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make uavInfo/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make uavInfo/CMakeFiles/roscpp_generate_messages_cpp.dir/build
 .PHONY : roscpp_generate_messages_cpp/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 .PHONY : uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -342,12 +357,12 @@ rosgraph_msgs_generate_messages_cpp: uavInfo/CMakeFiles/rosgraph_msgs_generate_m
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
 .PHONY : rosgraph_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
 .PHONY : uavInfo/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -357,12 +372,12 @@ std_msgs_generate_messages_cpp: uavInfo/CMakeFiles/std_msgs_generate_messages_cp
 
 # fast build rule for target.
 std_msgs_generate_messages_cpp/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make uavInfo/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make uavInfo/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
 .PHONY : std_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
 .PHONY : uavInfo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
@@ -372,12 +387,12 @@ sensor_msgs_generate_messages_nodejs: uavInfo/CMakeFiles/sensor_msgs_generate_me
 
 # fast build rule for target.
 sensor_msgs_generate_messages_nodejs/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make uavInfo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make uavInfo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
 .PHONY : sensor_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 .PHONY : uavInfo/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -387,12 +402,12 @@ geometry_msgs_generate_messages_cpp: uavInfo/CMakeFiles/geometry_msgs_generate_m
 
 # fast build rule for target.
 geometry_msgs_generate_messages_cpp/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make uavInfo/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make uavInfo/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
 .PHONY : geometry_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/roscpp_generate_messages_eus.dir/rule
 .PHONY : uavInfo/CMakeFiles/roscpp_generate_messages_eus.dir/rule
 
 # Convenience name for target.
@@ -402,12 +417,12 @@ roscpp_generate_messages_eus: uavInfo/CMakeFiles/roscpp_generate_messages_eus.di
 
 # fast build rule for target.
 roscpp_generate_messages_eus/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/roscpp_generate_messages_eus.dir/build.make uavInfo/CMakeFiles/roscpp_generate_messages_eus.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/roscpp_generate_messages_eus.dir/build.make uavInfo/CMakeFiles/roscpp_generate_messages_eus.dir/build
 .PHONY : roscpp_generate_messages_eus/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
 .PHONY : uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -417,12 +432,12 @@ rosgraph_msgs_generate_messages_py: uavInfo/CMakeFiles/rosgraph_msgs_generate_me
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_py/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
 .PHONY : rosgraph_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
 .PHONY : uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -432,12 +447,12 @@ rosgraph_msgs_generate_messages_lisp: uavInfo/CMakeFiles/rosgraph_msgs_generate_
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_lisp/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make uavInfo/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
 .PHONY : rosgraph_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
 .PHONY : uavInfo/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
@@ -447,12 +462,12 @@ roscpp_generate_messages_nodejs: uavInfo/CMakeFiles/roscpp_generate_messages_nod
 
 # fast build rule for target.
 roscpp_generate_messages_nodejs/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make uavInfo/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make uavInfo/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
 .PHONY : roscpp_generate_messages_nodejs/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
 .PHONY : uavInfo/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
@@ -462,12 +477,12 @@ std_msgs_generate_messages_nodejs: uavInfo/CMakeFiles/std_msgs_generate_messages
 
 # fast build rule for target.
 std_msgs_generate_messages_nodejs/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make uavInfo/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make uavInfo/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
 .PHONY : std_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
 .PHONY : uavInfo/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -477,12 +492,12 @@ roscpp_generate_messages_lisp: uavInfo/CMakeFiles/roscpp_generate_messages_lisp.
 
 # fast build rule for target.
 roscpp_generate_messages_lisp/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make uavInfo/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make uavInfo/CMakeFiles/roscpp_generate_messages_lisp.dir/build
 .PHONY : roscpp_generate_messages_lisp/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
 .PHONY : uavInfo/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
@@ -492,12 +507,12 @@ std_msgs_generate_messages_eus: uavInfo/CMakeFiles/std_msgs_generate_messages_eu
 
 # fast build rule for target.
 std_msgs_generate_messages_eus/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make uavInfo/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make uavInfo/CMakeFiles/std_msgs_generate_messages_eus.dir/build
 .PHONY : std_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
 .PHONY : uavInfo/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -507,12 +522,12 @@ geometry_msgs_generate_messages_lisp: uavInfo/CMakeFiles/geometry_msgs_generate_
 
 # fast build rule for target.
 geometry_msgs_generate_messages_lisp/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make uavInfo/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make uavInfo/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
 .PHONY : geometry_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 .PHONY : uavInfo/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -522,12 +537,12 @@ std_msgs_generate_messages_lisp: uavInfo/CMakeFiles/std_msgs_generate_messages_l
 
 # fast build rule for target.
 std_msgs_generate_messages_lisp/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make uavInfo/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make uavInfo/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
 .PHONY : std_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
 .PHONY : uavInfo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -537,12 +552,12 @@ sensor_msgs_generate_messages_cpp: uavInfo/CMakeFiles/sensor_msgs_generate_messa
 
 # fast build rule for target.
 sensor_msgs_generate_messages_cpp/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make uavInfo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make uavInfo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
 .PHONY : sensor_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
 .PHONY : uavInfo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
@@ -552,12 +567,12 @@ sensor_msgs_generate_messages_eus: uavInfo/CMakeFiles/sensor_msgs_generate_messa
 
 # fast build rule for target.
 sensor_msgs_generate_messages_eus/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make uavInfo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make uavInfo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
 .PHONY : sensor_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
 uavInfo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f CMakeFiles/Makefile2 uavInfo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
 .PHONY : uavInfo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -567,7 +582,7 @@ sensor_msgs_generate_messages_lisp: uavInfo/CMakeFiles/sensor_msgs_generate_mess
 
 # fast build rule for target.
 sensor_msgs_generate_messages_lisp/fast:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make uavInfo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make uavInfo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
 .PHONY : sensor_msgs_generate_messages_lisp/fast
 
 src/processData.o: src/processData.cpp.o
@@ -576,7 +591,7 @@ src/processData.o: src/processData.cpp.o
 
 # target to build an object file
 src/processData.cpp.o:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/processData.dir/build.make uavInfo/CMakeFiles/processData.dir/src/processData.cpp.o
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/processData.dir/build.make uavInfo/CMakeFiles/processData.dir/src/processData.cpp.o
 .PHONY : src/processData.cpp.o
 
 src/processData.i: src/processData.cpp.i
@@ -585,7 +600,7 @@ src/processData.i: src/processData.cpp.i
 
 # target to preprocess a source file
 src/processData.cpp.i:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/processData.dir/build.make uavInfo/CMakeFiles/processData.dir/src/processData.cpp.i
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/processData.dir/build.make uavInfo/CMakeFiles/processData.dir/src/processData.cpp.i
 .PHONY : src/processData.cpp.i
 
 src/processData.s: src/processData.cpp.s
@@ -594,7 +609,7 @@ src/processData.s: src/processData.cpp.s
 
 # target to generate assembly for a file
 src/processData.cpp.s:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/processData.dir/build.make uavInfo/CMakeFiles/processData.dir/src/processData.cpp.s
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/processData.dir/build.make uavInfo/CMakeFiles/processData.dir/src/processData.cpp.s
 .PHONY : src/processData.cpp.s
 
 src/processData_origin.o: src/processData_origin.cpp.o
@@ -603,7 +618,7 @@ src/processData_origin.o: src/processData_origin.cpp.o
 
 # target to build an object file
 src/processData_origin.cpp.o:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/processDataOrigin.dir/build.make uavInfo/CMakeFiles/processDataOrigin.dir/src/processData_origin.cpp.o
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/processDataOrigin.dir/build.make uavInfo/CMakeFiles/processDataOrigin.dir/src/processData_origin.cpp.o
 .PHONY : src/processData_origin.cpp.o
 
 src/processData_origin.i: src/processData_origin.cpp.i
@@ -612,7 +627,7 @@ src/processData_origin.i: src/processData_origin.cpp.i
 
 # target to preprocess a source file
 src/processData_origin.cpp.i:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/processDataOrigin.dir/build.make uavInfo/CMakeFiles/processDataOrigin.dir/src/processData_origin.cpp.i
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/processDataOrigin.dir/build.make uavInfo/CMakeFiles/processDataOrigin.dir/src/processData_origin.cpp.i
 .PHONY : src/processData_origin.cpp.i
 
 src/processData_origin.s: src/processData_origin.cpp.s
@@ -621,8 +636,35 @@ src/processData_origin.s: src/processData_origin.cpp.s
 
 # target to generate assembly for a file
 src/processData_origin.cpp.s:
-	cd /home/lucasyu/ros_test_ws/build && $(MAKE) -f uavInfo/CMakeFiles/processDataOrigin.dir/build.make uavInfo/CMakeFiles/processDataOrigin.dir/src/processData_origin.cpp.s
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/processDataOrigin.dir/build.make uavInfo/CMakeFiles/processDataOrigin.dir/src/processData_origin.cpp.s
 .PHONY : src/processData_origin.cpp.s
+
+src/save_depth_img.o: src/save_depth_img.cpp.o
+
+.PHONY : src/save_depth_img.o
+
+# target to build an object file
+src/save_depth_img.cpp.o:
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/processDataDepthRgb.dir/build.make uavInfo/CMakeFiles/processDataDepthRgb.dir/src/save_depth_img.cpp.o
+.PHONY : src/save_depth_img.cpp.o
+
+src/save_depth_img.i: src/save_depth_img.cpp.i
+
+.PHONY : src/save_depth_img.i
+
+# target to preprocess a source file
+src/save_depth_img.cpp.i:
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/processDataDepthRgb.dir/build.make uavInfo/CMakeFiles/processDataDepthRgb.dir/src/save_depth_img.cpp.i
+.PHONY : src/save_depth_img.cpp.i
+
+src/save_depth_img.s: src/save_depth_img.cpp.s
+
+.PHONY : src/save_depth_img.s
+
+# target to generate assembly for a file
+src/save_depth_img.cpp.s:
+	cd /home/ubuntu/local_navigation/build && $(MAKE) -f uavInfo/CMakeFiles/processDataDepthRgb.dir/build.make uavInfo/CMakeFiles/processDataDepthRgb.dir/src/save_depth_img.cpp.s
+.PHONY : src/save_depth_img.cpp.s
 
 # Help Target
 help:
@@ -636,6 +678,7 @@ help:
 	@echo "... test"
 	@echo "... install/local"
 	@echo "... install/strip"
+	@echo "... processDataDepthRgb"
 	@echo "... processDataOrigin"
 	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... geometry_msgs_generate_messages_nodejs"
@@ -670,6 +713,9 @@ help:
 	@echo "... src/processData_origin.o"
 	@echo "... src/processData_origin.i"
 	@echo "... src/processData_origin.s"
+	@echo "... src/save_depth_img.o"
+	@echo "... src/save_depth_img.i"
+	@echo "... src/save_depth_img.s"
 .PHONY : help
 
 
@@ -681,6 +727,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/lucasyu/ros_test_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/ubuntu/local_navigation/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

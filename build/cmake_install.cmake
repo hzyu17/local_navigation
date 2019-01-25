@@ -1,8 +1,8 @@
-# Install script for directory: /home/lucasyu/ros_test_ws/src
+# Install script for directory: /home/ubuntu/local_navigation/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/lucasyu/ros_test_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/ubuntu/local_navigation/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,80 +44,80 @@ endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/lucasyu/ros_test_ws/install/_setup_util.py")
+   "/home/ubuntu/local_navigation/install/_setup_util.py")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/lucasyu/ros_test_ws/install" TYPE PROGRAM FILES "/home/lucasyu/ros_test_ws/build/catkin_generated/installspace/_setup_util.py")
+file(INSTALL DESTINATION "/home/ubuntu/local_navigation/install" TYPE PROGRAM FILES "/home/ubuntu/local_navigation/build/catkin_generated/installspace/_setup_util.py")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/lucasyu/ros_test_ws/install/env.sh")
+   "/home/ubuntu/local_navigation/install/env.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/lucasyu/ros_test_ws/install" TYPE PROGRAM FILES "/home/lucasyu/ros_test_ws/build/catkin_generated/installspace/env.sh")
+file(INSTALL DESTINATION "/home/ubuntu/local_navigation/install" TYPE PROGRAM FILES "/home/ubuntu/local_navigation/build/catkin_generated/installspace/env.sh")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/lucasyu/ros_test_ws/install/setup.bash")
+   "/home/ubuntu/local_navigation/install/setup.bash")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/lucasyu/ros_test_ws/install" TYPE FILE FILES "/home/lucasyu/ros_test_ws/build/catkin_generated/installspace/setup.bash")
+file(INSTALL DESTINATION "/home/ubuntu/local_navigation/install" TYPE FILE FILES "/home/ubuntu/local_navigation/build/catkin_generated/installspace/setup.bash")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/lucasyu/ros_test_ws/install/setup.sh")
+   "/home/ubuntu/local_navigation/install/setup.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/lucasyu/ros_test_ws/install" TYPE FILE FILES "/home/lucasyu/ros_test_ws/build/catkin_generated/installspace/setup.sh")
+file(INSTALL DESTINATION "/home/ubuntu/local_navigation/install" TYPE FILE FILES "/home/ubuntu/local_navigation/build/catkin_generated/installspace/setup.sh")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/lucasyu/ros_test_ws/install/setup.zsh")
+   "/home/ubuntu/local_navigation/install/setup.zsh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/lucasyu/ros_test_ws/install" TYPE FILE FILES "/home/lucasyu/ros_test_ws/build/catkin_generated/installspace/setup.zsh")
+file(INSTALL DESTINATION "/home/ubuntu/local_navigation/install" TYPE FILE FILES "/home/ubuntu/local_navigation/build/catkin_generated/installspace/setup.zsh")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/lucasyu/ros_test_ws/install/.rosinstall")
+   "/home/ubuntu/local_navigation/install/.rosinstall")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/lucasyu/ros_test_ws/install" TYPE FILE FILES "/home/lucasyu/ros_test_ws/build/catkin_generated/installspace/.rosinstall")
+file(INSTALL DESTINATION "/home/ubuntu/local_navigation/install" TYPE FILE FILES "/home/ubuntu/local_navigation/build/catkin_generated/installspace/.rosinstall")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/lucasyu/ros_test_ws/build/gtest/cmake_install.cmake")
-  include("/home/lucasyu/ros_test_ws/build/uavInfo/cmake_install.cmake")
+  include("/home/ubuntu/local_navigation/build/gtest/cmake_install.cmake")
+  include("/home/ubuntu/local_navigation/build/uavInfo/cmake_install.cmake")
 
 endif()
 
@@ -129,5 +129,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/lucasyu/ros_test_ws/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/ubuntu/local_navigation/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

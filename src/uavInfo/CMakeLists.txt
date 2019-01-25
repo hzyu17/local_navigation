@@ -13,11 +13,14 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   sensor_msgs
   std_msgs
+  cv_bridge
   geometry_msgs
+  message_filters
 )
 find_package(PCL REQUIRED)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
+find_package(OpenCV REQUIRED)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -125,7 +128,9 @@ catkin_package(
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
-  ${PCL_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS}
+  ${PCL_INCLUDE_DIRS} 
+  ${catkin_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -171,7 +176,7 @@ add_executable(processDataOrigin src/processData_origin.cpp)
 target_link_libraries(processDataOrigin ${PCL_LIBRARIES} ${catkin_LIBRARIES})
 
 add_executable(processDataDepthRgb src/save_depth_img.cpp)
-target_link_libraries(processDataDepthRgb ${PCL_LIBRARIES} ${catkin_LIBRARIES})
+target_link_libraries(processDataDepthRgb ${PCL_LIBRARIES} ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination

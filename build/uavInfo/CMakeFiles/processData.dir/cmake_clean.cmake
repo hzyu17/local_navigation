@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/processData.dir/src/processData.cpp.o"
-  "/home/lucasyu/ros_test_ws/devel/lib/uavInfo/processData.pdb"
-  "/home/lucasyu/ros_test_ws/devel/lib/uavInfo/processData"
+  "/home/ubuntu/local_navigation/devel/lib/uavInfo/processData.pdb"
+  "/home/ubuntu/local_navigation/devel/lib/uavInfo/processData"
 )
 
 # Per-language clean rules from dependency scanning.
