@@ -1,8 +1,9 @@
-function h = drawRect(vec) 
+function h = drawRect(vec,filename,flag_type) 
 figure 
 hold on
 grid minor
-h = plot(vec(:,1),vec(:,2),'LineWidth',3 ,'Color','r');
+h = plot(vec(:,1),vec(:,2),'LineWidth',1 ,'Color','r');
+title([flag_type , '_', filename(end-22:end-4)],'Interpreter','none');
 rectangle('Position',[-16,-12,32,24],'LineWidth',4,'EdgeColor','b'); 
 rectangle('Position',[-14,-9,6,4],'LineWidth',4,'EdgeColor','b'); 
 rectangle('Position',[-14,-2,6,5],'LineWidth',4,'EdgeColor','b'); 
