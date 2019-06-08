@@ -95,7 +95,7 @@ line([1.06 3.06],[11.8 10.8],'LineWidth',0.8);
 len = length(cell_robotpos);
 if numbre_of_trj <= len
     for i = 1:numbre_of_trj
-        vec = cell_robotpos{4,i};
+        vec = cell_robotpos{5,i};
         if isempty(vec)
             continue
         else

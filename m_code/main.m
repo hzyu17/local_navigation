@@ -58,10 +58,11 @@ len_file_rgb_sim = length(files_rgb_sim(:,1));
 % 1st line: the avg actual velocities
 % 2nd line: the avg command velocities
 % 3rd line: the avg minimum distances
-% 4th line: robotPos
-cell_avg_dep_noi_sim = cell(4,len_file_dep_sim);   
-cell_avg_dep_sem_noi_sim = cell(4,len_file_dep_sem_sim);
-cell_avg_rgb_sim = cell(4,len_file_rgb_sim);
+% 4rd line: the avg average distances
+% 5th line: robotPos
+cell_avg_dep_noi_sim = cell(5,len_file_dep_sim);   
+cell_avg_dep_sem_noi_sim = cell(5,len_file_dep_sem_sim);
+cell_avg_rgb_sim = cell(5,len_file_rgb_sim);
 total_duration_dep_noi_sim = zeros(1,len_file_dep_sim);
 total_duration_dep_sem_noi_sim = zeros(1,len_file_dep_sem_sim);
 total_duration_rgb_sim = zeros(1,len_file_rgb_sim);
@@ -71,11 +72,11 @@ for i = 1:number_of_files_sim
     i_filename_dep_sem_sim = files_dep_semantic_noi_sim(i,:);
     i_filename_dep_rgb_sim = files_rgb_sim(i,:);
     [ cell_avg_dep_noi_sim{1,i}, cell_avg_dep_noi_sim{2,i}, cell_avg_dep_noi_sim{3,i},...
-        cell_avg_dep_noi_sim{4,i},total_duration_dep_noi_sim(1,i) ] = processOneFile_sim( i_filename_dep_sim,'depth');
+        cell_avg_dep_noi_sim{4,i},cell_avg_dep_noi_sim{5,i},total_duration_dep_noi_sim(1,i) ] = processOneFile_sim( i_filename_dep_sim,'depth');
     [ cell_avg_dep_sem_noi_sim{1,i}, cell_avg_dep_sem_noi_sim{2,i}, cell_avg_dep_sem_noi_sim{3,i},...
-        cell_avg_dep_sem_noi_sim{4,i},total_duration_dep_sem_noi_sim(1,i) ] = processOneFile_sim( i_filename_dep_sem_sim ,'depth_semantic');
+        cell_avg_dep_sem_noi_sim{4,i},cell_avg_dep_sem_noi_sim{5,i},total_duration_dep_sem_noi_sim(1,i) ] = processOneFile_sim( i_filename_dep_sem_sim ,'depth_semantic');
     [ cell_avg_rgb_sim{1,i}, cell_avg_rgb_sim{2,i}, cell_avg_rgb_sim{3,i},...
-        cell_avg_rgb_sim{4,i},total_duration_rgb_sim(1,i) ] = processOneFile_sim( i_filename_dep_rgb_sim ,'rgb');
+        cell_avg_rgb_sim{4,i},cell_avg_rgb_sim{5,i},total_duration_rgb_sim(1,i) ] = processOneFile_sim( i_filename_dep_rgb_sim ,'rgb');
 end
 
 %% draw trajectories
@@ -122,10 +123,11 @@ len_file_dep_sem_real = length(files_dep_semantic_noi_real(:,1));
 % 1st line: the avg actual velocities
 % 2nd line: the avg command velocities
 % 3rd line: the avg minimum distances
-% 4th line: robotPos
-cell_avg_dep_noi_real = cell(4,len_file_dep_real);   
-cell_avg_dep_sem_noi_real = cell(4,len_file_dep_sem_real);
-cell_avg_rgb_real = cell(4,len_file_dep_sem_real);
+% 4th line: the avg of avg distances
+% 5th line: robotPos
+cell_avg_dep_noi_real = cell(5,len_file_dep_real);   
+cell_avg_dep_sem_noi_real = cell(5,len_file_dep_sem_real);
+cell_avg_rgb_real = cell(5,len_file_dep_sem_real);
 total_duration_dep_noi_real = zeros(1,len_file_dep_sem_real);
 total_duration_dep_sem_noi_real = zeros(1,len_file_dep_sem_real);
 total_duration_rgb_real = zeros(1,len_file_dep_sem_real);
@@ -136,9 +138,9 @@ for i = 1:number_of_files_real
     i_filename_dep_noi_real = files_depth_noi_real(i,:);
     i_filename_dep_sem_noi_real = files_dep_semantic_noi_real(i,:);
     [ cell_avg_dep_noi_real{1,i}, cell_avg_dep_noi_real{2,i},cell_avg_dep_noi_real{3,i},...
-        cell_avg_dep_noi_real{4,i},total_duration_dep_noi_real(1,i)] = processOneFile_real( i_filename_dep_noi_real );
+        cell_avg_dep_noi_real{4,i},cell_avg_dep_noi_real{5,i},total_duration_dep_noi_real(1,i)] = processOneFile_real( i_filename_dep_noi_real );
     [ cell_avg_dep_sem_noi_real{1,i}, cell_avg_dep_sem_noi_real{2,i},cell_avg_dep_sem_noi_real{3,i},...
-        cell_avg_dep_noi_real{4,i},total_duration_dep_sem_noi_real(1,i) ] = processOneFile_real( i_filename_dep_sem_noi_real );
+        cell_avg_dep_sem_noi_real{4,i},cell_avg_dep_sem_noi_real{5,i},total_duration_dep_sem_noi_real(1,i) ] = processOneFile_real( i_filename_dep_sem_noi_real );
 end
 
 % interference or missturns depth
@@ -171,7 +173,7 @@ avg_total_duration_dep_noi_real = sum(total_duration_dep_noi_real)/length(total_
 avg_total_duration_dep_sem_noi_real = sum(total_duration_dep_sem_noi_real)/length(total_duration_dep_noi_real);
 avg_total_duration_rgb_noi_real = sum(total_duration_rgb_real)/length(total_duration_dep_noi_real);
 
-%% avg on command velocities and minimum distances
+%% avg on command velocities, actual velocities, minimum distances and average distances
 % simulation
 [avg_total_dep_noi_sim,avg_total_dep_sem_noi_sim,avg_total_rgb_sim] = ...
     avgCmdvelMindist(cell_avg_dep_noi_sim,cell_avg_dep_sem_noi_sim,cell_avg_rgb_sim,number_of_files_sim,false);

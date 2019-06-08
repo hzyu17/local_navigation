@@ -1,4 +1,4 @@
-function [ avg_cmd_vel, avg_vel_abs, avg_min_dis_in_range, robotPos, total_duration] = processOneFile_sim( filename, flag_type )
+function [ avg_cmd_vel, avg_vel_abs, avg_min_dis_in_range, avg_avg_dis_in_range, robotPos, total_duration] = processOneFile_sim( filename, flag_type )
 %processOneFile process one trial from reading data to data processing 
 
 %% load data
@@ -51,7 +51,7 @@ end
 
 %% distance to people near and velocity when people in range of 2m  
 range_near = 3;
-[avg_vel_abs,avg_min_dis_in_range,avg_cmd_vel] = avgPeopleNearestDist_sim(periods,robotPos, robotVel, controlVel, peopleStanding, actors, range_near);
+[avg_vel_abs,avg_min_dis_in_range,avg_avg_dis_in_range,avg_cmd_vel] = avgPeopleNearestDist_sim(periods,robotPos, robotVel, controlVel, peopleStanding, actors, range_near);
 % avg_vel_abs
 % avg_min_dis_in_range
 % figure 

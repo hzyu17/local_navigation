@@ -1,4 +1,4 @@
-function [avg_vel_abs,avg_min_dis_in_range,avg_cmd_vel] = avgPeopleNearestDist_real(periods,robotPos,robotVel,controlVel,min_person_dist,range_near)
+function [avg_vel_abs,avg_min_dis_in_range,avg_avg_dis_in_range,avg_cmd_vel] = avgPeopleNearestDist_real(periods,robotPos,robotVel,controlVel,min_person_dist,range_near)
 %avgNearestDist calculate the average distances between the robot and the
 %person when the person is in the sight of the robot
 
@@ -17,7 +17,6 @@ function [avg_vel_abs,avg_min_dis_in_range,avg_cmd_vel] = avgPeopleNearestDist_r
 % in the range threshold
 
 len = length(periods(:,1)); % number of periods
-min_dists = zeros(len,10); % minimum distance to 10 people in each period
 velocities = cell(1,len);
 cmd_vels = cell(1,len);
 distances_in_range = cell(1,len);
@@ -50,6 +49,7 @@ end
 avg_vel_abs = zeros(1,len);
 avg_cmd_vel = zeros(1,len);
 min_dis_in_range = zeros(1,len);
+avg_dis_in_range = zeros(1,len);
 count_non_empty = 0;
 for i = 1:len
     i_vel = velocities{1,i};
@@ -61,9 +61,11 @@ for i = 1:len
         count_non_empty = count_non_empty + 1;
         avg_vel_abs(1,i) = sum(sqrt(i_vel(:,1).*i_vel(:,1) + i_vel(:,2).*i_vel(:,2)))/length(i_vel(:,1));
         min_dis_in_range(1,i) = min(i_distance(:,1));
+        avg_dis_in_range(1,i) = sum(i_distance(:,1)) / length(i_distance(:,1));
         avg_cmd_vel(1,i) = sum(i_cmdvel(:,1))/length(i_cmdvel(:,1));
     end
 end
+avg_avg_dis_in_range = sum(avg_dis_in_range)/count_non_empty;
 avg_min_dis_in_range = sum(min_dis_in_range)/count_non_empty;
 avg_cmd_vel_in_range = sum(avg_cmd_vel)/count_non_empty;
 avg_vel_abs_in_range = sum(avg_vel_abs)/count_non_empty;

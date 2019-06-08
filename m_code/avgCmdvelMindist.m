@@ -4,25 +4,29 @@ function [avg_total_dep_noi,avg_total_dep_sem_noi,avg_total_rgb] = ...
 % line 1: avg actual vel
 % line 2: avg cmd vel
 % line 3: avg min dist
-avg_dep_noi = zeros(3,number_of_files);
-avg_dep_sem = zeros(3,number_of_files);
-avg_rgb = zeros(3,number_of_files);
+% line 4: avg avg dist
+avg_dep_noi = zeros(4,number_of_files);
+avg_dep_sem = zeros(4,number_of_files);
+avg_rgb = zeros(4,number_of_files);
 for i=1:number_of_files
     % depth image
     avg_dep_noi(1,i) = sum(cell_avg_dep_noi{1,i})/length(cell_avg_dep_noi{1,i});
     avg_dep_noi(2,i) = sum(cell_avg_dep_noi{2,i})/length(cell_avg_dep_noi{2,i});
     avg_dep_noi(3,i) = sum(cell_avg_dep_noi{3,i})/length(cell_avg_dep_noi{3,i});
+    avg_dep_noi(4,i) = sum(cell_avg_dep_noi{4,i})/length(cell_avg_dep_noi{4,i});
     % depth_semantic
     avg_dep_sem(1,i) = sum(cell_avg_dep_sem_noi{1,i})/length(cell_avg_dep_sem_noi{1,i});
     avg_dep_sem(2,i) = sum(cell_avg_dep_sem_noi{2,i})/length(cell_avg_dep_sem_noi{2,i});
     avg_dep_sem(3,i) = sum(cell_avg_dep_sem_noi{3,i})/length(cell_avg_dep_sem_noi{3,i});
+    avg_dep_sem(4,i) = sum(cell_avg_dep_sem_noi{4,i})/length(cell_avg_dep_sem_noi{4,i});
     % rgb
     if(~isempty(cell_avg_rgb{1,1})) ~=0
         avg_rgb(1,i) = sum(cell_avg_rgb{1,i})/length(cell_avg_rgb{1,i});
         avg_rgb(2,i) = sum(cell_avg_rgb{2,i})/length(cell_avg_rgb{2,i});
         avg_rgb(3,i) = sum(cell_avg_rgb{3,i})/length(cell_avg_rgb{3,i});
+        avg_rgb(4,i) = sum(cell_avg_rgb{4,i})/length(cell_avg_rgb{4,i});
     else
-        avg_rgb = zeros(3,1);
+        avg_rgb = zeros(4,1);
     end
 end
 avg_total_dep_noi = sum(avg_dep_noi,2)/number_of_files;

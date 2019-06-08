@@ -1,4 +1,4 @@
-function [avg_vel_abs,avg_min_dis_in_range,avg_cmd_vel] = avgPeopleNearestDist_sim(periods,robotPos,robotVel,controlVel,peopleSatanding,Actors,range_near)
+function [avg_vel_abs,avg_min_dis_in_range,avg_avg_dis_in_range,avg_cmd_vel] = avgPeopleNearestDist_sim(periods,robotPos,robotVel,controlVel,peopleSatanding,Actors,range_near)
 %avgNearestDist calculate the average distances between the robot and the
 %person when the person is in the sight of the robot
 
@@ -70,6 +70,7 @@ end
 avg_vel_abs = zeros(1,len);
 avg_cmd_vel = zeros(1,len);
 min_dis_in_range = zeros(1,len);
+avg_dis_in_range = zeros(1,len);
 % avg_min_dis_in_range = 0;
 % avg_cmd_vel_in_range = 0;
 % avg_vel_abs_in_range = 0;
@@ -84,10 +85,12 @@ for i = 1:len
         count_non_empty = count_non_empty + 1;
         avg_vel_abs(1,i) = sum(sqrt(i_vel(:,1).*i_vel(:,1) + i_vel(:,2).*i_vel(:,2)))/length(i_vel(:,1));
         min_dis_in_range(1,i) = min(i_distance(:,1));
+        avg_dis_in_range(1,i) = sum(i_distance(:,1)) / length(i_distance(:,1));
         avg_cmd_vel(1,i) = sum(i_cmdvel(:,1))/length(i_cmdvel(:,1));
     end
 end
 avg_min_dis_in_range = sum(min_dis_in_range)/count_non_empty;
+avg_avg_dis_in_range = sum(avg_dis_in_range)/count_non_empty;
 avg_cmd_vel_in_range = sum(avg_cmd_vel)/count_non_empty;
 avg_vel_abs_in_range = sum(avg_vel_abs)/count_non_empty;
 end
