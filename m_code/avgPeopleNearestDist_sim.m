@@ -65,15 +65,14 @@ for i = 1:len
     velocities{1,i} = velocity_near;
     cmd_vels{1,i} = cmdvel_near;
 end
-AvgMinDist = sum(candidates_min(:,1)) / len;
 
 % avg vel, control vel and pos in the range of threshold (2m)
 avg_vel_abs = zeros(1,len);
 avg_cmd_vel = zeros(1,len);
 min_dis_in_range = zeros(1,len);
-avg_min_dis_in_range = 0;
-avg_cmd_vel_in_range = 0;
-avg_vel_abs_in_range = 0;
+% avg_min_dis_in_range = 0;
+% avg_cmd_vel_in_range = 0;
+% avg_vel_abs_in_range = 0;
 count_non_empty = 0;
 for i = 1:len
     i_vel = velocities{1,i};

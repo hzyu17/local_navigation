@@ -2,6 +2,8 @@ clear all
 close all
 clc
 
+number_of_files_sim = 11;
+number_of_files_real = 5;
 %% specifying the filenames in simulation 
 files_depth_noi_sim = [
 '../simulation/depth_noi/routeCommand_2019_05_13_17_54_27.csv';
@@ -56,24 +58,48 @@ len_file_rgb_sim = length(files_rgb_sim(:,1));
 % 1st line: the avg actual velocities
 % 2nd line: the avg command velocities
 % 3rd line: the avg minimum distances
-cell_avg_dep_noi_sim = cell(2,len_file_dep_sim);   
-cell_avg_dep_sem_noi_sim = cell(2,len_file_dep_sem_sim);
-cell_avg_rgb_sim = cell(2,len_file_rgb_sim);
-
+% 4th line: robotPos
+cell_avg_dep_noi_sim = cell(4,len_file_dep_sim);   
+cell_avg_dep_sem_noi_sim = cell(4,len_file_dep_sem_sim);
+cell_avg_rgb_sim = cell(4,len_file_rgb_sim);
+total_duration_dep_noi_sim = zeros(1,len_file_dep_sim);
+total_duration_dep_sem_noi_sim = zeros(1,len_file_dep_sem_sim);
+total_duration_rgb_sim = zeros(1,len_file_rgb_sim);
 % loop on the sim files
-for i = 1:11
+for i = 1:number_of_files_sim
     i_filename_dep_sim = files_depth_noi_sim(i,:);
     i_filename_dep_sem_sim = files_dep_semantic_noi_sim(i,:);
     i_filename_dep_rgb_sim = files_rgb_sim(i,:);
-    [ cell_avg_dep_noi_sim{1,i}, cell_avg_dep_noi_sim{2,i}, cell_avg_dep_noi_sim{3,i} ] = processOneFile_sim( i_filename_dep_sim,'depth');
-    [ cell_avg_dep_sem_noi_sim{1,i}, cell_avg_dep_sem_noi_sim{2,i}, cell_avg_dep_sem_noi_sim{3,i} ] = processOneFile_sim( i_filename_dep_sem_sim ,'depth_semantic');
-    [ cell_avg_rgb_sim{1,i}, cell_avg_rgb_sim{2,i}, cell_avg_rgb_sim{3,i} ] = processOneFile_sim( i_filename_dep_rgb_sim ,'rgb');
+    [ cell_avg_dep_noi_sim{1,i}, cell_avg_dep_noi_sim{2,i}, cell_avg_dep_noi_sim{3,i},...
+        cell_avg_dep_noi_sim{4,i},total_duration_dep_noi_sim(1,i) ] = processOneFile_sim( i_filename_dep_sim,'depth');
+    [ cell_avg_dep_sem_noi_sim{1,i}, cell_avg_dep_sem_noi_sim{2,i}, cell_avg_dep_sem_noi_sim{3,i},...
+        cell_avg_dep_sem_noi_sim{4,i},total_duration_dep_sem_noi_sim(1,i) ] = processOneFile_sim( i_filename_dep_sem_sim ,'depth_semantic');
+    [ cell_avg_rgb_sim{1,i}, cell_avg_rgb_sim{2,i}, cell_avg_rgb_sim{3,i},...
+        cell_avg_rgb_sim{4,i},total_duration_rgb_sim(1,i) ] = processOneFile_sim( i_filename_dep_rgb_sim ,'rgb');
 end
 
-% interference or missturns
+%% draw trajectories
+draw_number_of_trj = 10;
+figure
+hold on
+grid minor
+drawRect_all_in_one(cell_avg_dep_sem_noi_sim,draw_number_of_trj)
+figure
+hold on
+grid minor
+drawRect_all_in_one(cell_avg_rgb_sim,draw_number_of_trj)
+figure
+hold on
+grid minor
+drawRect_all_in_one(cell_avg_dep_noi_sim,draw_number_of_trj)
+figure
+hold on
+grid minor
+drawRect_all_in_one(cell_avg_dep_sem_noi_sim,draw_number_of_trj)
+drawRect_all_in_one(cell_avg_rgb_sim,draw_number_of_trj)
+drawRect_all_in_one(cell_avg_dep_noi_sim,draw_number_of_trj)
 
-
-%% in real scenario
+%% ----------------- in real scenario ------------------ %%
 files_depth_noi_real = [
     '../realscenario/depth/routeCommand_crush2_misstur0_2019_05_16_16_42_08.csv';
     '../realscenario/depth/routeCommand_crush2_misstur0_2019_05_16_17_02_25.csv';
@@ -96,16 +122,23 @@ len_file_dep_sem_real = length(files_dep_semantic_noi_real(:,1));
 % 1st line: the avg actual velocities
 % 2nd line: the avg command velocities
 % 3rd line: the avg minimum distances
-cell_avg_dep_noi_real = cell(2,len_file_dep_real);   
-cell_avg_dep_sem_noi_real = cell(2,len_file_dep_sem_real);
+% 4th line: robotPos
+cell_avg_dep_noi_real = cell(4,len_file_dep_real);   
+cell_avg_dep_sem_noi_real = cell(4,len_file_dep_sem_real);
+cell_avg_rgb_real = cell(4,len_file_dep_sem_real);
+total_duration_dep_noi_real = zeros(1,len_file_dep_sem_real);
+total_duration_dep_sem_noi_real = zeros(1,len_file_dep_sem_real);
+total_duration_rgb_real = zeros(1,len_file_dep_sem_real);
 % ... no rgb data in real scenario tests ...
 
 % loop on the real scenario files
-for i = 1:len_file_dep_real
-    i_filename_dep_real = files_depth_noi_real(i,:);
-    i_filename_dep_sem_real = files_dep_semantic_noi_real(i,:);
-    [ cell_avg_dep_noi_real{1,i}, cell_avg_dep_noi_real{2,i}, cell_avg_dep_noi_real{3,i} ] = processOneFile_real( i_filename_dep_real );
-    [ cell_avg_dep_sem_noi_real{1,i}, cell_avg_dep_sem_noi_real{2,i}, cell_avg_dep_sem_noi_real{3,i} ] = processOneFile_real( i_filename_dep_sem_real );
+for i = 1:number_of_files_real
+    i_filename_dep_noi_real = files_depth_noi_real(i,:);
+    i_filename_dep_sem_noi_real = files_dep_semantic_noi_real(i,:);
+    [ cell_avg_dep_noi_real{1,i}, cell_avg_dep_noi_real{2,i},cell_avg_dep_noi_real{3,i},...
+        cell_avg_dep_noi_real{4,i},total_duration_dep_noi_real(1,i)] = processOneFile_real( i_filename_dep_noi_real );
+    [ cell_avg_dep_sem_noi_real{1,i}, cell_avg_dep_sem_noi_real{2,i},cell_avg_dep_sem_noi_real{3,i},...
+        cell_avg_dep_noi_real{4,i},total_duration_dep_sem_noi_real(1,i) ] = processOneFile_real( i_filename_dep_sem_noi_real );
 end
 
 % interference or missturns depth
@@ -117,6 +150,7 @@ for i = 1:len_file_dep_real
     crush_and_missturns_depth(i,1) = str2num(files_depth_noi_real(i,indx_crush));
     crush_and_missturns_depth(i,2) = str2num(files_depth_noi_real(i,indx_missturns));
 end
+
 % interference or missturns depth semantics
 for i = 1:len_file_dep_real
     indx_crush = strfind( files_dep_semantic_noi_real(i,:), 'crush' ) + length('crush');
@@ -124,5 +158,62 @@ for i = 1:len_file_dep_real
     crush_and_missturns_depth_semantic(i,1) = str2num(files_dep_semantic_noi_real(i,indx_crush));
     crush_and_missturns_depth_semantic(i,2) = str2num(files_dep_semantic_noi_real(i,indx_missturns));
 end
+
+%% -------------------- calculation of average numbers ---------------------- %%
+%% avg on total duration
+% sim
+avg_total_duration_dep_noi_sim = sum(total_duration_dep_noi_sim)/length(total_duration_dep_noi_sim);
+avg_total_duration_dep_sem_noi_sim = sum(total_duration_dep_sem_noi_sim)/length(total_duration_dep_sem_noi_sim);
+avg_total_duration_rgb_noi_sim = sum(total_duration_rgb_sim)/length(total_duration_rgb_sim);
+
+% real world
+avg_total_duration_dep_noi_real = sum(total_duration_dep_noi_real)/length(total_duration_dep_noi_real);
+avg_total_duration_dep_sem_noi_real = sum(total_duration_dep_sem_noi_real)/length(total_duration_dep_noi_real);
+avg_total_duration_rgb_noi_real = sum(total_duration_rgb_real)/length(total_duration_dep_noi_real);
+
+%% avg on command velocities and minimum distances
+% simulation
+[avg_total_dep_noi_sim,avg_total_dep_sem_noi_sim,avg_total_rgb_sim] = ...
+    avgCmdvelMindist(cell_avg_dep_noi_sim,cell_avg_dep_sem_noi_sim,cell_avg_rgb_sim,number_of_files_sim,false);
+% real world
+[avg_total_dep_noi_real,avg_total_dep_sem_noi_real,avg_total_rgb_real] = ...
+    avgCmdvelMindist(cell_avg_dep_noi_real,cell_avg_dep_sem_noi_real,cell_avg_rgb_real,number_of_files_real,true);
+
+%% avg crushes, miss turns and duration in real scenario
+% avg crushes and missturns
+avg_crush_and_missturns_dep_sem_noi = sum(crush_and_missturns_depth_semantic,1)/number_of_files_real;
+avg_crush_and_missturns_dep_noi = sum(crush_and_missturns_depth,1)/number_of_files_real;
+
+
+%% plot interference bars for real_scenario
+figure
+crushs = [crush_and_missturns_depth(:,1),crush_and_missturns_depth_semantic(:,1)];
+bar(crushs);
+title('number of crush in real world trials')
+grid on 
+set(gca,'XTickLabel',{'0','1','2','3','4','5','6'});
+% set(ch,'FaceVertexCData',[1 0 1;0 0 0;])
+legend('depth','depth_semantic');
+xlabel('trial ');
+ylabel('crushes');
+
+figure
+crushs = [crush_and_missturns_depth(:,2),crush_and_missturns_depth_semantic(:,2)];
+bar(crushs);
+title('number of missed turns in real world trials')
+grid on 
+set(gca,'XTickLabel',{'0','1','2','3','4','5','6'});
+% set(ch,'FaceVertexCData',[1 0 1;0 0 0;])
+legend('depth','depth_semantic');
+xlabel('trail ');
+ylabel('miss turns');
+
 % map & plot
 % h = drawRect(robotPos);
+
+%% drafts
+% test draw obstacles
+file_example = '../simulation/rgb/routeCommand_2019_05_15_14_36_49.csv';
+data_example = importfile(file_example);
+robotPos = data_example(2:end,7:8);
+drawRect(robotPos,file_example,'rgb');

@@ -1,4 +1,4 @@
-function [ avg_cmd_vel, avg_vel_abs, avg_min_dis_in_range ] = processOneFile_sim( filename )
+function [ avg_cmd_vel, avg_vel_abs, avg_min_dis_in_range, robotPos, total_duration] = processOneFile_sim( filename )
 %processOneFile process one trial from reading data to data processing 
 
 %% load data
@@ -9,7 +9,7 @@ function [ avg_cmd_vel, avg_vel_abs, avg_min_dis_in_range ] = processOneFile_sim
 % pos actor_04, pos actor_05, pos actor_06, pos actor_07, pos actor_08
 
 % read data
-data = table2array(importfile(filename));
+data = importfile(filename);
 len = length(data(2:end,1));
 
 
@@ -17,6 +17,7 @@ len = length(data(2:end,1));
 timestamp = data(2:end,1);
 flagAutoManual = data(2:end,2);
 durationAuto = data(2:end,3);
+total_duration = durationAuto(end,1);
 commandDir = data(2:end,4);
 controlVel = data(2:end,5);
 controlAngular = data(2:end,6);
