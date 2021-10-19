@@ -1,0 +1,14 @@
+1: good 人踩过等未记录，看具体数据，下同
+2: good
+3: bad crash 1
+4: bad crash 1
+5: good 
+6: bad crash 1 撞开着的门
+7: good
+8: good
+9: good
+10: good
+11: bad crash 1 撞开着的门
+12: bad miss turn 1 crash 1 柜子
+
+会出现正面撞人的情况，人没有碰撞体积，故没有停下来，需要进行判定，将其也作为collision，撞人的collision展比作为一个指标
